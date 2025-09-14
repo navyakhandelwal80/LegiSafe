@@ -12,7 +12,7 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import DashboardPage from './pages/DashboardPage';
 import Footer from './components/Footer';
-import 'C:\Users\dell\legisafe-react\src\App.css';
+import './App.css';
 
 export type PageType =
   | 'home'
