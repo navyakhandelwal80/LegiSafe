@@ -1,5 +1,5 @@
 // App.tsx
-import React, { useState, useEffect } from 'react';
+/*import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import FeaturesPage from './pages/FeaturesPage'; // remove .tsx
@@ -84,4 +84,55 @@ const App: React.FC = () => {
   );
 };
 
-export default App; 
+export default App; */
+
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Header from './components/Header';
+import HomePage from './pages/HomePage';
+import FeaturesPage from './pages/FeaturesPage';
+import HowItWorksPage from './pages/HowItWorksPage';
+import PricingPage from './pages/PricingPage';
+import AboutPage from './pages/AboutPage';
+import BlogPage from './pages/BlogPage';
+import ContactPage from './pages/ContactPage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+import DashboardPage from './pages/DashboardPage';
+import ChatPage from './pages/ChatPage';
+import Footer from './components/Footer';
+import './App.css';
+
+const App: React.FC = () => {
+  const location = useLocation();
+  
+  // Pages that shouldn't show header/footer
+  const hideHeaderFooter = ['/dashboard', '/login', '/signup'].includes(location.pathname) ||
+                          location.pathname.startsWith('/chat');
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {!hideHeaderFooter && <Header />}
+      
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/features" element={<FeaturesPage />} />
+          <Route path="/how-it-works" element={<HowItWorksPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/chat/:docId?" element={<ChatPage />} />
+        </Routes>
+      </main>
+      
+      {!hideHeaderFooter && <Footer />}
+    </div>
+  );
+};
+
+export default App;

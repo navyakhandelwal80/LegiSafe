@@ -1,5 +1,5 @@
 // components/Header.tsx
-import React from 'react';
+/*import React from 'react';
 import type { PageType } from '../App';
 
 interface HeaderProps {
@@ -82,10 +82,10 @@ const Header: React.FC<HeaderProps> = ({ onShowPage, isMobileMenuOpen, onToggleM
         <button className="md:hidden text-gray-600" onClick={onToggleMobileMenu}>
           <i className="fas fa-bars text-xl"></i>
         </button>
-      </div>
+      </div>*/
       
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
+      /*{isMobileMenuOpen && (
         <div className="md:hidden container mx-auto px-4 py-4 bg-white shadow-lg rounded-lg mt-2">
           <div className="flex flex-col space-y-4">
             <button onClick={() => onShowPage('home')} className="text-gray-600 hover:text-blue-600 text-left">
@@ -122,6 +122,79 @@ const Header: React.FC<HeaderProps> = ({ onShowPage, isMobileMenuOpen, onToggleM
               >
                 Dashboard
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};
+
+export default Header;*/
+
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+const Header: React.FC = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  return (
+    <header className="bg-white shadow-sm sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="flex items-center">
+          <Link to="/" className="text-2xl font-bold text-blue-600 flex items-center">
+            <i className="fas fa-scale-balanced mr-2"></i>
+            <span>LegiSafe</span>
+          </Link>
+        </div>
+        
+        <nav className="hidden md:flex space-x-8">
+          <Link to="/" className="nav-link text-gray-600 hover:text-blue-600">Home</Link>
+          <Link to="/features" className="nav-link text-gray-600 hover:text-blue-600">Features</Link>
+          <Link to="/how-it-works" className="nav-link text-gray-600 hover:text-blue-600">How It Works</Link>
+          <Link to="/pricing" className="nav-link text-gray-600 hover:text-blue-600">Pricing</Link>
+          <Link to="/about" className="nav-link text-gray-600 hover:text-blue-600">About</Link>
+          <Link to="/blog" className="nav-link text-gray-600 hover:text-blue-600">Blog</Link>
+          <Link to="/contact" className="nav-link text-gray-600 hover:text-blue-600">Contact</Link>
+        </nav>
+        
+        <div className="hidden md:flex space-x-4">
+          <Link to="/login" className="px-4 py-2 text-blue-600 font-medium rounded-lg hover:bg-blue-50">
+            Log in
+          </Link>
+          <Link to="/dashboard" className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
+            Dashboard
+          </Link>
+        </div>
+        
+        <button className="md:hidden text-gray-600" onClick={toggleMobileMenu}>
+          <i className="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+      
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden container mx-auto px-4 py-4 bg-white shadow-lg rounded-lg mt-2">
+          <div className="flex flex-col space-y-4">
+            <Link to="/" className="text-gray-600 hover:text-blue-600" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+            <Link to="/features" className="text-gray-600 hover:text-blue-600" onClick={() => setIsMobileMenuOpen(false)}>Features</Link>
+            <Link to="/how-it-works" className="text-gray-600 hover:text-blue-600" onClick={() => setIsMobileMenuOpen(false)}>How It Works</Link>
+            <Link to="/pricing" className="text-gray-600 hover:text-blue-600" onClick={() => setIsMobileMenuOpen(false)}>Pricing</Link>
+            <Link to="/about" className="text-gray-600 hover:text-blue-600" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+            <Link to="/blog" className="text-gray-600 hover:text-blue-600" onClick={() => setIsMobileMenuOpen(false)}>Blog</Link>
+            <Link to="/contact" className="text-gray-600 hover:text-blue-600" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+            <div className="pt-4 border-t border-gray-100 flex flex-col space-y-3">
+              <Link to="/login" className="w-full py-2 text-blue-600 font-medium rounded-lg border border-blue-600 hover:bg-blue-50 text-center" onClick={() => setIsMobileMenuOpen(false)}>
+                Log in
+              </Link>
+              <Link to="/dashboard" className="w-full py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition text-center" onClick={() => setIsMobileMenuOpen(false)}>
+                Dashboard
+              </Link>
             </div>
           </div>
         </div>
