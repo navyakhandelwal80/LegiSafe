@@ -1,6 +1,5 @@
-// pages/HowItWorksPage.tsx
-import React, { useState } from 'react';
-import type { PageType } from '../App';
+import React from 'react';
+
 const HowItWorksPage: React.FC = () => {
   return (
     <section className="py-16 bg-white">
@@ -88,4 +87,5 @@ const HowItWorksPage: React.FC = () => {
     </section>
   );
 };
+
 export default HowItWorksPage;
